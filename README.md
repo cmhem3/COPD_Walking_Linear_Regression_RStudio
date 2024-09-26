@@ -6,9 +6,7 @@
 
 *ESSAY QUESTIONS*
 1.	What are the differences between the coefficients in simple and multiple regression the models? Why do they differ?
-
 2.	How does the adjusted R2 statistic change and why?
-
 3.	Which of the regression models would you choose as your final model and why?
 •	Mention any checks you performed or observations you had about model fit and assumptions. 
 •	Did you have any concerns with collinearity?
@@ -17,16 +15,22 @@
 
 **MODEL-1:  Walking distance and age: Identify the α and β coefficients**
 
--MWT1Best_AGE <- lm(MWT1Best~AGE, data = COPD)
->Summary(MWT1Best_AGE)
+    -MWT1Best_AGE <- lm(MWT1Best~AGE, data = COPD)
+    -Summary(MWT1Best_AGE)
+
 Residuals:
-    Min      1Q  Median      3Q     Max 
--257.44  -84.40   20.30   67.87  250.16 
+- Min -257.44
+- 1Q  -84.40 
+- Median 20.30 
+- 3Q  67.87
+- Max 250.16 
+
 
 Coefficients:
             Estimate Std. Error t value Pr(>|t|)    
 (Intercept)  616.453     93.440   6.597 2.14e-09 ***
 AGE           -3.104      1.326  -2.341   0.0213 *
+
 
 Residual standard error: 104.2 on 98 degrees of freedom
   (1 observation deleted due to missingness)
@@ -38,28 +42,22 @@ F-statistic: 5.478 on 1 and 98 DF,  p-value: 0.02128
 (Intercept) 431.023080 801.8819906
 AGE          -5.735718  -0.4722946
 
->plot(COPD$MWT1Best, COPD$AGE, xlab = “AGE”, ylab = “MWT1Best”)
+    -plot(COPD$MWT1Best, COPD$AGE, xlab = “AGE”, ylab = “MWT1Best”)
+
+![image](https://github.com/user-attachments/assets/28f12a44-2edb-4962-8f55-cb663d1cd7e9)
+
  
-Summarizing the above: Identify the α and β coefficients
-•	Equation for the line of regression: MWT1best = α + β ∗ AGE or y = 616.453 – (3.104) * AGE, where: 
-o	y-intercept:  α = 616.453, this is the “average y when x = 0”.  Average walking distance at 0 years old (just a reference point, not actually measuring babies).
-o	coefficient of y: β = -3.104, this is the average decrease in walking (y) for every one-year increase age (x).
-o	For every one-year increase in age, it is estimated that walking distance will decrease by 3.1 meters.  
+**Summarizing the above: Identify the α and β coefficients**
 
-•	 Adjusted R-squared:  0.04328
-o	The model explains 4.32% of the variance in the observations.  This suggests that the model is only explaining a small portion of the variance in our dependent variable, while a large amount of the variability remains unexplained.
-
-•	95% CI:  -5.735718 to -0.4722946
-o	This estimates that the population coefficient values likely occur within this range (i.e. this is estimated population decrease distance in walking per year of age gained)
-	Here, our coefficient of y is roughly the mean of our 95% CI.
-
-•	p-value:  0.02128
-o	Since the CI was set at 95%, and this is <5%, we can reject the null hypothesis (H0) stating there’s no correlation between age and walking ability. 
-o	Since there is a 2.128% chance of getting these results, it can likely be concluded that age is correlated with decreased walking ability (as the scatter plot confirms the number of MWT1Best data points <400 with age >70, or the older the member, the more likely their walking ability decreases, on average).
+    -Equation for the line of regression: MWT1best = α + β ∗ AGE or y = 616.453 – (3.104) * AGE, where: 
+- y-intercept:  α = 616.453, this is the “average y when x = 0”.  Average walking distance at 0 years old (just a reference point, not actually measuring babies).
+- coefficient of y: β = -3.104, this is the average decrease in walking (y) for every one-year increase age (x).  For every one-year increase in age, it is estimated that walking distance will decrease by 3.1 meters.
+- Adjusted R-squared:  0.04328:  The model explains 4.32% of the variance in the observations.  This suggests that the model is only explaining a small portion of the variance in our dependent variable, while a large amount of the variability remains unexplained.
+- 95% CI:  -5.735718 to -0.4722946: This estimates that the population coefficient values likely occur within this range (i.e. this is estimated population decrease distance in walking per year of age gained).  Here, our coefficient of y is roughly the mean of our 95% CI.
+- p-value:  0.02128:  Since the CI was set at 95%, and this is <5%, we can reject the null hypothesis (H0) stating there’s no correlation between age and walking ability.  Since there is a 2.128% chance of getting these results, it can likely be concluded that age is correlated with decreased walking ability (as the scatter plot confirms the number of MWT1Best data points <400 with age >70, or the older the member, the more likely their walking ability decreases, on average).
 
 
-
-* MODEL-2:  FVC and MWT1Best: Identify the α and β coefficients for this model.
+##MODEL-2:  FVC and MWT1Best: Identify the α and β coefficients for this model##
 >MWT1Best_FVC <- lm(MWT1Best~FVC, data = COPD)
 >Summary(MWT1Best_FVC)
 Residuals:
