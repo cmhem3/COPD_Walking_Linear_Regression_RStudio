@@ -2,14 +2,14 @@
 **An MPH Graduate Project Peer Review – Interpreting Multiple Linear Regression Models in R**
 
 ### PROJECT INSTRUCTIONS: 
-•	Fit a multiple regression model and to explore the relationships between Age and FVC on Walking distance (MWT1best).  FVC (Forced vital capacity) is the total amount of air exhaled during a pulmonary function test. This is a measure of lung capacity and health.  Units are measured in Liters.  MWT1best is the study's variable named for total distance walked by the participant.  Units are in meters.
+Fit a multiple regression model and to explore the relationships between Age and FVC on Walking distance (MWT1best).  FVC (Forced vital capacity) is the total amount of air exhaled during a pulmonary function test. This is a measure of lung capacity and health.  Units are measured in Liters.  MWT1best is the study's variable named for total distance walked by the participant.  Units are in meters.
 
 *ESSAY QUESTIONS*
 1.	What are the differences between the coefficients in simple and multiple regression the models? Why do they differ?
 2.	How does the adjusted R2 statistic change and why?
 3.	Which of the regression models would you choose as your final model and why?
-•	Mention any checks you performed or observations you had about model fit and assumptions. 
-•	Did you have any concerns with collinearity?
+- Mention any checks you performed or observations you had about model fit and assumptions.
+- Did you have any concerns with collinearity?
 
 4.	Discuss whether you would include FVC and FEV1 in the same multiple regression model with AGE and expand on why you may or may not want to do that.
 
@@ -27,23 +27,28 @@ Residuals:
 
 
 Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  616.453     93.440   6.597 2.14e-09 ***
-AGE           -3.104      1.326  -2.341   0.0213 *
+- (Intercept) 616.453
+- AGE         -3.104
+  
+Residual standard error: 104.2 on 98 degrees of freedom  (1 observation deleted due to missingness)
 
-
-Residual standard error: 104.2 on 98 degrees of freedom
-  (1 observation deleted due to missingness)
 Multiple R-squared:  0.05294,	Adjusted R-squared:  0.04328 
-F-statistic: 5.478 on 1 and 98 DF,  p-value: 0.02128
 
->confint(MWT1Best_AGE)
-2.5 %      97.5 %
-(Intercept) 431.023080 801.8819906
-AGE          -5.735718  -0.4722946
+F-statistic: 5.478 on 1 and 98 DF,  
+
+p-value: 0.02128
+
+95% Confidence Interval: 
+
+    -confint(MWT1Best_AGE)  
+
+- 2.5 %,        97.5 %
+- (Intercept)        431.023080,    801.8819906
+- AGE                 -5.735718,    -0.4722946
+
+**MODEL-1: Scatter plot of Age and Walking Distance: 
 
     -plot(COPD$MWT1Best, COPD$AGE, xlab = “AGE”, ylab = “MWT1Best”)
-
 ![image](https://github.com/user-attachments/assets/28f12a44-2edb-4962-8f55-cb663d1cd7e9)
 
  
@@ -57,31 +62,44 @@ AGE          -5.735718  -0.4722946
 - p-value:  0.02128:  Since the CI was set at 95%, and this is <5%, we can reject the null hypothesis (H0) stating there’s no correlation between age and walking ability.  Since there is a 2.128% chance of getting these results, it can likely be concluded that age is correlated with decreased walking ability (as the scatter plot confirms the number of MWT1Best data points <400 with age >70, or the older the member, the more likely their walking ability decreases, on average).
 
 
-##MODEL-2:  FVC and MWT1Best: Identify the α and β coefficients for this model##
->MWT1Best_FVC <- lm(MWT1Best~FVC, data = COPD)
->Summary(MWT1Best_FVC)
+**MODEL-2:  FVC and MWT1Best: Identify the α and β coefficients for this model**
+
+    -MWT1Best_FVC <- lm(MWT1Best~FVC, data = COPD)
+    -Summary(MWT1Best_FVC)
+
 Residuals:
-     Min       1Q   Median       3Q      Max 
--251.663  -66.598    6.364   63.539  246.125 
+- Min -251.663 
+- 1Q -66.598
+- Median 6.364
+- 3Q 63.539
+- Max 246.125
+ 
 
 Coefficients:
-            Estimate Std. Error t value Pr(>|t|)    
-(Intercept)  254.951     30.779   8.283 6.28e-13 ***
-FVC           48.630      9.866   4.929 3.37e-06 ***
+- (Intercept)  254.951     
+- FVC           48.630
+  
+Residual standard error: 95.87 on 98 degrees of freedom  (1 observation deleted due to missingness)
 
-Residual standard error: 95.87 on 98 degrees of freedom
-  (1 observation deleted due to missingness)
 Multiple R-squared:  0.1987,	Adjusted R-squared:  0.1905 
-F-statistic: 24.29 on 1 and 98 DF,  p-value: 3.368e-06
 
->confint(MWT1Best_FVC)
-2.5 %    97.5 %
-(Intercept) 193.87101 316.03072
-FVC          29.05061  68.20964
+F-statistic: 24.29 on 1 and 98 DF,  
 
-> plot(COPD$MWT1Best, COPD$FVC, xlab = "FVC", ylab = "MWT1Best")
+p-value: 3.368e-06
+
+95% Confidence Interval: 
+
+    -confint(MWT1Best_FVC)
+
+-             2.5 %,        97.5 %
+- (Intercept) 193.87101,     316.03072
+- FVC          29.05061,      68.20964
+
+MODEL-2: Scatter plot of FVC and Walking Distance:
+
+    -plot(COPD$MWT1Best, COPD$FVC, xlab = "FVC", ylab = "MWT1Best")
  
-Summarizing the above: Identify the α and β coefficients
+**Summarizing the above: Identify the α and β coefficients**
 •	Equation for the line of regression: MWT1best = α + β ∗ FVC, or: y = 254.95 + (48.63) *FVC, where:
 o	α = 254.95, this is the “average y when x = 0” (i.e. the average walking distance at 0 FVC).
 o	β = 48.63, the average increase in walking distance (y) for every one unit increase FVC (x) (i.e. for every 1 unit increase in FVC, walking distance will increase by 48.63 meters).
