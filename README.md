@@ -57,9 +57,9 @@ p-value: 0.02128
     -Equation for the line of regression: MWT1best = α + β ∗ AGE or y = 616.453 – (3.104) * AGE, where: 
 - y-intercept:  α = 616.453, this is the “average y when x = 0”.  Average walking distance at 0 years old (just a reference point, not actually measuring babies).
 - coefficient of y: β = -3.104, this is the average decrease in walking (y) for every one-year increase age (x).  For every one-year increase in age, it is estimated that walking distance will decrease by 3.1 meters.
-- Adjusted R-squared:  0.04328:  The model explains 4.32% of the variance in the observations.  This suggests that the model is only explaining a small portion of the variance in our dependent variable, while a large amount of the variability remains unexplained.
-- 95% CI:  -5.735718 to -0.4722946: This estimates that the population coefficient values likely occur within this range (i.e. this is estimated population decrease distance in walking per year of age gained).  Here, our coefficient of y is roughly the mean of our 95% CI.
-- p-value:  0.02128:  Since the CI was set at 95%, and this is <5%, we can reject the null hypothesis (H0) stating there’s no correlation between age and walking ability.  Since there is a 2.128% chance of getting these results, it can likely be concluded that age is correlated with decreased walking ability (as the scatter plot confirms the number of MWT1Best data points <400 with age >70, or the older the member, the more likely their walking ability decreases, on average).
+- Adjusted R-squared = 0.04328, The model explains 4.32% of the variance in the observations.  This suggests that the model is only explaining a small portion of the variance in our dependent variable, while a large amount of the variability remains unexplained.
+- 95% CI = -5.735718 to -0.4722946, This estimates that the population coefficient values likely occur within this range (i.e. this is estimated population decrease distance in walking per year of age gained).  Here, our coefficient of y is roughly the mean of our 95% CI.
+- p-value = 0.02128, Since the CI was set at 95%, and this is <5%, we can reject the null hypothesis (H0) stating there’s no correlation between age and walking ability.  Since there is a 2.128% chance of getting these results, it can likely be concluded that age is correlated with decreased walking ability (as the scatter plot confirms the number of MWT1Best data points <400 with age >70, or the older the member, the more likely their walking ability decreases, on average).
 
 
 **MODEL-2:  FVC and MWT1Best: Identify the α and β coefficients for this model**
@@ -91,30 +91,29 @@ p-value: 3.368e-06
 
     -confint(MWT1Best_FVC)
 
--             2.5 %,        97.5 %
+- 2.5 %,        97.5 %
 - (Intercept) 193.87101,     316.03072
 - FVC          29.05061,      68.20964
 
-MODEL-2: Scatter plot of FVC and Walking Distance:
+**MODEL-2: Scatter plot of FVC and Walking Distance:
 
     -plot(COPD$MWT1Best, COPD$FVC, xlab = "FVC", ylab = "MWT1Best")
+![image](https://github.com/user-attachments/assets/d5001519-0da3-4e63-89e3-218b1d9ffa2c)
+
  
 **Summarizing the above: Identify the α and β coefficients**
-•	Equation for the line of regression: MWT1best = α + β ∗ FVC, or: y = 254.95 + (48.63) *FVC, where:
-o	α = 254.95, this is the “average y when x = 0” (i.e. the average walking distance at 0 FVC).
-o	β = 48.63, the average increase in walking distance (y) for every one unit increase FVC (x) (i.e. for every 1 unit increase in FVC, walking distance will increase by 48.63 meters).
 
-•	 Adjusted R-squared:  0.1905
-o	The model explains 19% of the variance in the observations, which shows this model fits the data a bit more closely than the previous model (i.e. the model explains variations in walking distance in relation to lung capacity better than the model explaining variations in walking when compared to age).
+    -Equation for the line of regression: MWT1best = α + β ∗ FVC, or: y = 254.95 + (48.63) *FVC, where:
+- y-intercept: α = 254.95, this is the “average y when x = 0” (i.e. the average walking distance at 0 FVC).
+- coefficient of y: β = 48.63, the average increase in walking distance (y) for every one unit increase FVC (x) (i.e. for every 1 unit increase in FVC, walking distance will increase by 48.63 meters).
+- Adjusted R-squared:  0.1905, The model explains 19% of the variance in the observations, which shows this model fits the data a bit more closely than the previous model (i.e. the model explains variations in walking distance in relation to lung capacity better than the model explaining variations in walking when compared to age).
+- 95% CI:  29.05061 to 68.20964, Detecting the likely population metrics occurs in this range, showing that an average person in this population would likely experience 29 – 68 meters improvement in walking for every 1 unit increase in FVC.
+- p-value:  3.368e-06, this is <5% so we can likely reject H0.  Meaning, with our 95% CI, we have a less than 5% chance of getting these results randomly (i.e. there is a likely effect of FVC on walking ability).  
 
-•	95% CI:  29.05061 to 68.20964
-o	Detecting the likely population observation occurs in this range, showing that an average person in this population would likely experience 29 – 68 meters improvement in walking for every 1 unit increase in FVC.
+**MODEL-3:  Multi-Linear Regression Model for FVC, AGE, and MWT1Best: Identify the α and β coefficients** 
 
-•	p-value:  3.368e-06
-o	this is <5% so we can likely reject H0.  Meaning, with our 95% CI, we have a less than 5% chance of getting these results randomly (i.e. there is a likely effect of FVC on walking ability).  
-*MODEL-3:  Multi-Linear Regression Model for FVC, AGE, and MWT1Best: Identify the α and β coefficients 
->MWT1Best_FVC_AGE <- lm(MWT1Best~FVC+AGE, data = COPD)
->summary(MWT1Best_FVC_AGE)
+    -MWT1Best_FVC_AGE <- lm(MWT1Best~FVC+AGE, data = COPD)
+    -summary(MWT1Best_FVC_AGE)
 Residuals:
     Min      1Q  Median      3Q     Max 
 -236.89  -66.05   12.55   75.54  211.72 
@@ -140,8 +139,8 @@ AGE          -4.736637   0.08649919
  
 Summarizing the above: Note you now have two β coefficients to interpret:
 •	Equation for the multi-linear regression:  MWT1best = α + (β1) ∗ FVC + (β2) ∗ AGE, or: y = 425.377 + β1(46.058) * FVC + β2(-2.325) * AGE
-o	α = 425.377, this is the “average y when x = 0.”  Average walking distance at 0 FVC & AGE
-o	β1 = 46.058 average increase in walking (y) for every one unit increase FVC (x).  Meaning, for every one unit increase in FVC, walking distance will increase by 46.058 meters.
+o	y-intercept: α = 425.377, this is the “average y when x = 0.”  Average walking distance at 0 FVC & AGE
+o	coefficient of y: β1 = 46.058 average increase in walking (y) for every one unit increase FVC (x).  Meaning, for every one unit increase in FVC, walking distance will increase by 46.058 meters.
 o	β2 = -2.325, average decrease in walking (y) for every one-year increase in age (x).
  
 •	 Adjusted R-squared:  0.2119
