@@ -64,8 +64,8 @@ p-value: 0.02128
 
 **MODEL-2:  FVC and MWT1Best: Identify the α and β coefficients for this model**
 
-    -MWT1Best_FVC <- lm(MWT1Best~FVC, data = COPD)
-    -Summary(MWT1Best_FVC)
+    MWT1Best_FVC <- lm(MWT1Best~FVC, data = COPD)
+    Summary(MWT1Best_FVC)
 
 Residuals:
 - Min -251.663 
