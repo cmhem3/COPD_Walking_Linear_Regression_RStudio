@@ -98,7 +98,7 @@ p-value: 3.368e-06
 **MODEL-2: Scatter plot of FVC and Walking Distance:
 
     -plot(COPD$MWT1Best, COPD$FVC, xlab = "FVC", ylab = "MWT1Best")
-![image](https://github.com/user-attachments/assets/d5001519-0da3-4e63-89e3-218b1d9ffa2c)
+![image](https://github.com/user-attachments/assets/ffb1a4c9-1d7a-4c05-8b68-d17f3d57af4f)
 
  
 **Summarizing the above: Identify the α and β coefficients**
