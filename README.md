@@ -1,5 +1,5 @@
 # COPD and Walking Distance: 
-**An MPH Graduate Project Peer Review – Interpreting Multiple Linear Regression Models in R**
+**A Master's of Public Health Graduate Project - Interpreting Effects of Lung Capacity and Age on Walking Distance using Linear Regression in RStudio (2020-04-05)**
 
 ### PROJECT INSTRUCTIONS: 
 Fit a multiple regression model and to explore the relationships between Age and FVC on Walking distance (MWT1best).  FVC (Forced vital capacity) is the total amount of air exhaled during a pulmonary function test. This is a measure of lung capacity and health.  Units are measured in Liters.  MWT1best is the study's variable named for total distance walked by the participant.  Units are in meters.
@@ -153,6 +153,8 @@ p-value: 3.588e-06
  
 **Summarizing the above: Note you now have two β coefficients to interpret:**
 
+**BEGGINER'S ERROR:** please note that on this third model, I plotted Age against FVC, as if the aim was to model the effect of age on FVC.  This was NOT intended; the original intent was to model the combined effects of FVC and Age (as idependent variables) on total walking distance.  While I did calculate the linear equation correctly (correlation coefficients, p-value, etc) the scatter plot is missing Walking on the Y-axis.  For future models, I would likely create a 3D-sufrance plot to model FVC and Age on the X and Y axises, then put Walking on the Z-axis to coicinde with the multi-linear regression equation defined below.  
+
     -Equation for the multi-linear regression:  MWT1best = α + (β1) ∗ FVC + (β2) ∗ AGE, or: y = 425.377 + β1(46.058) * FVC + β2(-2.325) * AGE, where:
 - y-intercept: α = 425.377, this is the “average y when x = 0.”  Average walking distance at 0 FVC & AGE.
 - coefficient of y: β1 = 46.058, the average increase in walking (y) for every one unit increase FVC (x).  Meaning, for every one unit increase in FVC, walking distance will increase by 46.058 meters.
@@ -190,7 +192,7 @@ B.	Q-Q plot: shows the majority of observations stay on the line in the middle, 
 
 **SUMMARY:**
 
-Of all three models, I would choose the multi-linear regression model based on a lower p-value and a better adjusted R-squared value.  As well, it is useful to model both predictor variables separately, prior to putting them in a multi-regression model; this helps to understand the individual effects on walking prior to comparing combined effects.  Finally, in any regression model, it is warranted that al variables must be carefully selected to ensure clear results.  For example, it is not advised to include both FVC and FEV1 within the same model, as both are measures of pulmonary health.  If two predictor variables are very similar and included in the model, issues of collinearity arise.  This is when there is difficulty accurately assessing or understanding results of the model.  FVC and Age are not highly similar, and thus make for good additions to a multiple regression model.
+Of all three models, I would choose the multi-linear regression model based on a lower p-value and a better adjusted R-squared value.  As well, it is useful to model both predictor variables separately, prior to putting them in a multi-regression model; this helps to understand the individual effects on walking prior to comparing combined effects.  Clearly, improving FVC can enhance walking distance, so having patients with COPD perform Respiratory Therapy exercsies may benefit their condition management.  Finally, in any regression model, it is warranted that al variables must be carefully selected to ensure clear results.  For example, it is not advised to include both FVC and FEV1 within the same model, as both are measures of pulmonary health.  If two predictor variables are very similar and included in the model, issues of collinearity arise.  This is when there is difficulty accurately assessing or understanding results of the model.  FVC and Age are not highly similar, and thus make for good additions to a multiple regression model.
 
 **REFERENCES:**
 Coursera. (n.d.). Statistical Analysis with R for Public Health. Retrieved February 2nd, 2020, from https://www.coursera.org/specializations/statistical-analysis-r-public-health?msockid=0a8de113eef36e56141cf5d6ef7f6f10
