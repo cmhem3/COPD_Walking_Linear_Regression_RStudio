@@ -153,7 +153,7 @@ p-value: 3.588e-06
  
 **Summarizing the above: Note you now have two β coefficients to interpret:**
 
-**BEGGINER'S ERROR:** please note that on this third model, I plotted Age against FVC, as if the aim was to model the effect of age on FVC.  This was NOT intended; the original intent was to model the combined effects of FVC and Age (as idependent variables) on total walking distance.  While I did calculate the linear equation correctly (correlation coefficients, p-value, etc) the scatter plot is missing Walking on the Y-axis.  For future models, I would likely create a 3D-sufrance plot to model FVC and Age on the X and Y axises, then put Walking on the Z-axis to coicinde with the multi-linear regression equation defined below.  
+**BEGGINER'S ERROR:** please note that on this third model, I plotted Age against FVC, as if the aim was to model the effect of age on FVC.  This was NOT intended; the original intent was to model the combined effects of FVC and Age (as idependent variables) on total walking distance.  While I did calculate the linear equation correctly (correlation coefficients, p-value, etc) the scatter plot is missing Walking on the Y-axis.  For future models, I would likely create a 3D-surface plot to model FVC and Age on the X and Y axises, then put Walking on the Z-axis to coincide with the multi-linear regression equation defined below.  
 
     -Equation for the multi-linear regression:  MWT1best = α + (β1) ∗ FVC + (β2) ∗ AGE, or: y = 425.377 + β1(46.058) * FVC + β2(-2.325) * AGE, where:
 - y-intercept: α = 425.377, this is the “average y when x = 0.”  Average walking distance at 0 FVC & AGE.
